@@ -14,6 +14,7 @@
         <attr name="scaleColor" format="integer" />
         <attr name="needleShadow" format="boolean" />
         <attr name="needleColor" format="integer" />
+        <attr name="transparent" format="boolean" />
         <attr name="textSize" format="float" />
         <attr name="upperText" format="string" />
         <attr name="lowerText" format="string" />

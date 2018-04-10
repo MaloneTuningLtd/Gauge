@@ -79,6 +79,7 @@ public class Gauge extends View {
     private int scaleColor;
     private int needleColor;
     private Paint textPaint;
+    private boolean transparent = false;
 
     private float requestedTextSize = 0;
     private String upperText = "";
@@ -119,6 +120,7 @@ public class Gauge extends View {
         scaleColor = a.getColor(R.styleable.Gauge_scaleColor, 0x9f004d0f);
         needleColor = a.getColor(R.styleable.Gauge_needleColor, Color.RED);
         needleShadow = a.getBoolean(R.styleable.Gauge_needleShadow, needleShadow);
+        transparent = a.getBoolean(R.styleable.Gauge_transparent, transparent);
         requestedTextSize = a.getFloat(R.styleable.Gauge_textSize, requestedTextSize);
         upperText = a.getString(R.styleable.Gauge_upperText) == null ? upperText : fromHtml(a.getString(R.styleable.Gauge_upperText)).toString();
         lowerText = a.getString(R.styleable.Gauge_lowerText) == null ? lowerText : fromHtml(a.getString(R.styleable.Gauge_lowerText)).toString();
@@ -160,7 +162,6 @@ public class Gauge extends View {
 
         scalePaint = new Paint();
         scalePaint.setStyle(Paint.Style.STROKE);
-
         scalePaint.setAntiAlias(true);
         scalePaint.setColor(scaleColor);
 
@@ -184,6 +185,14 @@ public class Gauge extends View {
         needleScrewPaint = new Paint();
         needleScrewPaint.setColor(Color.BLACK);
         needleScrewPaint.setAntiAlias(true);
+
+        if(transparent) {
+            rimPaint.setStyle(Paint.Style.STROKE);
+            rimPaint.setStrokeWidth(0.005f);
+            facePaint.setColor(Color.TRANSPARENT);
+            scalePaint.setColor(Color.TRANSPARENT);
+            labelPaint.setColor(Color.TRANSPARENT);
+        }
     }
 
     @Override
