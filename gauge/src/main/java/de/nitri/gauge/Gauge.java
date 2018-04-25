@@ -560,10 +560,7 @@ public class Gauge extends View {
      * @param color needle color
      */
     public void setNeedleColor(int color) {
-        needlePaint = new Paint();
         needlePaint.setColor(getResources().getColor(color));
-        needlePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        needlePaint.setAntiAlias(true);
     }
 
     private void validate() {
